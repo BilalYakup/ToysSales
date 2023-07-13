@@ -21,6 +21,6 @@ Projeye 3 ayrı hazır template giydirilmiştir.(kullanıcı sayfası,login sayf
 
 
 - Migration dosyaları silindikten sonra , add-migration ve update-database komutları kullanılarak veritabanı ayaklandırılabilir.
-- Veritabanında default olarak admin bilgileri gelecektir.Admin için şifre : 123
+- Veritabanında default olarak admin bilgileri gelecektir.Kullnıcı adı :Admin / şifre : 123
 
   
