@@ -1,0 +1,54 @@
+﻿@{
+	ViewData["Title"] = "LogIn";
+}
+
+@model RegisterDTO
+
+@{
+	Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+}
+
+<!-- partial:index.partial.html -->
+<div class="container">
+	<div class="screen">
+		<div class="screen__content">
+			<form asp-action="Register">
+
+				<div class="login__field">
+					<i class="login__icon fas fa-user"></i>
+					<input asp-for=UserName type="text" class="login__input" placeholder="Kullanıcı Adı">
+				</div>
+
+				<div class="login__field">
+					<i class="login__icon fas fa-lock"></i>
+					<input asp-for=Email type="email" class="login__input" placeholder="Email">
+				</div>
+
+				<div class="login__field">
+					<i class="login__icon fas fa-lock"></i>
+					<input asp-for=Password type="password" class="login__input" placeholder="Şifre">
+				</div>
+
+				<div class="login__field">
+					<i class="login__icon fas fa-lock"></i>
+					<input asp-for=PasswordConfirm type="password" class="login__input" placeholder="Şifre Tekrar">
+				</div>
+
+				<input type="submit" class="button login__submit" value="Kayıt Ol">
+				<span class="button__text"></span>
+				</>
+
+				<a asp-area="" asp-controller="Account" asp-action="LogIn" class="button login__submit">
+					<span class="button__text">Geri Dön</span>
+				</a>
+			</form>
+		</div>
+		<div class="screen__background">
+			<span class="screen__background__shape screen__background__shape4"></span>
+			<span class="screen__background__shape screen__background__shape3"></span>
+			<span class="screen__background__shape screen__background__shape2"></span>
+			<span class="screen__background__shape screen__background__shape1"></span>
+		</div>
+	</div>
+</div>
+<!-- partial -->

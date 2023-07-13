@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+
+@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityRole>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title text-black">Rol Listesi</h2>
+                </div>
+                <div class="card-body">
+                    <div class="table table-responsive table-responsive-sm">
+                        <table class="table table-striped">
+                           <thead>
+                               <tr>
+                                   <th>Id</th>
+                                    <th>Rol Adı</th>
+                                    <th>Kullanıcı(lar)</th>
+                                    <th>Kullanıcı Ata</th>
+                                    <th>Sil</th>
+                               </tr>
+                           </thead>
+                           <tbody>
+                               @foreach (var role in Model)
+                                {
+                                    <tr>
+                                        <td>@role.Id</td>
+                                        <td>@role.Name</td>
+                                        <td user-role="@role.Id">@role.Id</td>
+                                        <td>
+                                            <a asp-controller="Roles" asp-action="AssignedUser" asp-route-id="@role.Id" class="btn btn-outline-success">Kullanıcı Ata</a>
+                                        </td>
+                                        <td>
+                                            <a asp-controller="Roles" asp-action="DeleteRole" asp-route-id="@role.Id" class="btn btn-outline-danger">Sil</a>
+                                        </td>
+                                    </tr>
+                                }
+                           </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a asp-controller="Roles" asp-action="CreateRole" class="btn btn-outline-info d-block">Yeni Rol Ekle</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

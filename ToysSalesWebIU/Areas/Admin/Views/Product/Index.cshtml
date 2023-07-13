@@ -1,0 +1,88 @@
+﻿@{
+    TempData["Title"] = "Index";
+}
+
+@model List<Product>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table table-responsive table-responsive-sm">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Ürün Resmi</th>
+                                    <th>Ürün Adı</th>
+                                    <th>Ürün Açıklaması</th>
+                                    <th>Ürün Fiyatı</th>
+                                    <th>Ürün Stok Adeti</th>
+                                    <th>Ürün Kategorisi</th>
+                                    <th>Ürün Durumu</th>
+                                    <th>Ürün Eklenme Zamanı</th>
+                                    <th>Ürünü Güncelle</th>
+                                    <th>Ürünü Sil</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (Product products in Model)
+                                {
+                                    <tr>
+                                        <td>@products.Id</td>
+                                        <td>
+                                            @if (products.Image == null)
+                                            {
+                                                <img src="~/images/noimage.jpg" width="100" alt="@products.Name"/>
+                                            }
+                                            else
+                                            {
+                                                <img src="~/images/products/@products.Image" width="100" alt="@products.Name" />
+                                            }
+                                        </td>
+                                        <td>@products.Name</td>
+                                        <td>@products.Description</td>
+                                        <td>@products.UnitPrice</td>
+                                        <td>@products.UnitStock</td>
+                                        <td>@products.CategoryId</td>
+                                        <td>@products.Status</td>
+                                        <td>@products.CreatedDate.ToShortDateString()</td>
+                                        <td>
+                                            <a asp-area="Admin" asp-controller="Product" asp-action="UpdateProduct" asp-route-id="@products.Id" class="btn btn-outline-warning">Güncelle</a>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-outline-danger btn-sm " data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Sil
+                                            </button>
+                                        </td>
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content bg-light">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">UYARI</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Silmek istediğinize emin misiniz?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                                                        <a asp-action="DeleteProduct" asp-route-id="@products.Id" class="btn btn-primary">Sil</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a asp-area="Admin" asp-controller="Product" asp-action="CreateProduct" class="btn btn-outline-success float-end">Ürün Ekle</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
